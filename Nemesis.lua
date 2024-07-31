@@ -59,19 +59,19 @@ getgenv().Script = {
 				['Enabled'] = false,
 			},
 			['Soft Panic'] = {
-				['Enabled'] = false,
+				['Enabled'] = true,
 				['Disables'] = {'Visuals'}
 			},
 		},
 		['Script Logic'] = {
 			['FFA Mode'] = true, --[[ Keep on for hood games ]]
-			['Global Wall Check'] = true --[[ Checks if a player is behind a wall before locking on ]]
+			['Global Wall Check'] = false --[[ Checks if a player is behind a wall before locking on ]]
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'Q',
+		['LockOn'] = 'T',
 		['Unlock'] = 'Z', --[[ Only works with double bind ]]
-		['AimAssist Toggle'] = 'B',
+		['AimAssist Toggle'] = 'B', -- [[ This is to completely disable the aim assist till the button is clicked again ]]
 		['Silent Toggle'] = 'P',
 		['Triggerbot'] = 'MouseButton2',
 		['AntiLock'] = 'Y',
@@ -96,12 +96,29 @@ getgenv().Script = {
 		['130-140'] = 0.1274,
 		['140-150'] = 0.1575,
 	},
+	['Universal'] = {
+		['Enabled'] = false, --[[ This is unsafe to use on games that are not listed in our status channel. (even on hood games!, only use this for universal use. )]]
+		['Predict'] = false,
+		['Prediction'] = 0.112,
+		['HitPart'] = 'Head',
+		['HitChance'] = {
+			['HitChance'] = 100,
+			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
+		},
+		--[[
+			Extra info:
+
+			this is a slent aim, the aimbot works on all universal games listed, to change the silent FOV, change 'Default FOV' in the silent aim section below
+
+			does not work on solara, or celery!
+		]]
+	},
 	['Silent'] = {
 		['Enabled'] = true,
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
 		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
-		['Default FOV'] = 150,
+		['Default FOV'] = 100,
 		['HitChance'] = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
@@ -141,14 +158,14 @@ getgenv().Script = {
 		['Mode'] = 'Target', --[[ Target / Regular ]]--
 		['Double Bind'] = false,
 		['Radius'] = 100,
-		['Stutter'] = 1,
+		['Stutter'] = 0,
 		['Stickiness'] = 1,
-		['Prediction'] = 0.135,
+		['Prediction'] = 0,
 		['Readjustment'] = false,
 		['Legacy Smoothing'] = true, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
 			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
-			['R15'] = {'Head', 'HumanoidRootPart'} 
+			['R15'] = {'Head'} 
 		},
 		['HitChance'] = {
 			['HitChance'] = 100,
@@ -176,7 +193,7 @@ getgenv().Script = {
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 100,
+			['Smoothing'] = 50,
 			['Easing'] = {
 				['Style'] = 'Expo',
 				['Formula'] = function(d, s)
@@ -185,17 +202,17 @@ getgenv().Script = {
 			},
 		},
 		['Randomization'] = {
-			['X'] = 1,
-			['Y'] = 1,
-			['Z'] = 1,
+			['X'] = 0,
+			['Y'] = 0,
+			['Z'] = 0,
 		},
 		['Unlock Conditions'] = {
 			['Shift Lock'] = false,
 			['Third Person'] = false,
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
-			['Wall Check'] = true,
-			['FOV Check'] = true,
+			['Wall Check'] = false,
+			['FOV Check'] = false,
 			['Visible'] = true,
 		},
 	},
@@ -246,7 +263,7 @@ getgenv().Script = {
 	['Visuals'] = {
 		['Load Check'] = false, --[[ Hide visuals on start ]]--
 		['Global ESP'] = {
-			['Enabled'] = false,
+			['Enabled'] = true,
 			['Team Check'] = true,
 			['Max Draw Distance'] = math.huge,
 			['Text Size'] = 10,
@@ -378,7 +395,7 @@ getgenv().Script = {
 		['Visualization'] = {
 			['Assist'] = {
 				['Visible'] = true,
-				['Filled'] = true,
+				['Filled'] = false,
 				['Transparency'] = 0.4,
 				['Color'] = Color3.fromRGB(221, 130, 240),
 			},
