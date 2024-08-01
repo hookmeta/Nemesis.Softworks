@@ -65,11 +65,11 @@ getgenv().Script = {
 		},
 		['Script Logic'] = {
 			['FFA Mode'] = true, --[[ Keep on for hood games ]]
-			['Global Wall Check'] = false --[[ Checks if a player is behind a wall before locking on ]]
+			['Global Wall Check'] = true --[[ Checks if a player is behind a wall before locking on ]]
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'T',
+		['LockOn'] = 'Z',
 		['Unlock'] = 'Z', --[[ Only works with double bind ]]
 		['AimAssist Toggle'] = 'B', -- [[ This is to completely disable the aim assist till the button is clicked again ]]
 		['Silent Toggle'] = 'P',
@@ -101,9 +101,9 @@ getgenv().Script = {
 		['Predict'] = false,
 		['Prediction'] = 0.112,
 		['HitPart'] = 'Head',
-		['HitChance'] = {
-			['HitChance'] = 100,
-			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
+		['PointScale'] = {
+			['Head'] = 100,
+			['Body'] = 50, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
 		--[[
 			Extra info:
@@ -123,12 +123,15 @@ getgenv().Script = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
-		['Prediction'] = 0.135,
+		['Prediction'] = 0.12772152,
 		['Draw Hit'] = false, 
 		['Auto Prediction'] = false,
-		['Prediction Adjustment'] = 1,
+		['Prediction Adjustment'] = 1.1,
+		['3D Adjustment'] = { false, Vector3.new(1, 0, 1) },
 		['Hit Location'] = {
 			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['Point Scale'] = 'Dynamic', --[[ Legacy, Dynamic, Static, Scalar, Full ]]
+			['Ignore Blank Points'] = true,
 			['R15'] = {'Head'}
 		},
 		['Prediction Points'] = { --[[ Will set your prediction depending on the part your aiming nearest to ]]--
@@ -158,13 +161,16 @@ getgenv().Script = {
 		['Mode'] = 'Target', --[[ Target / Regular ]]--
 		['Double Bind'] = false,
 		['Radius'] = 100,
-		['Stutter'] = 0,
+		['Stutter'] = 5,
 		['Stickiness'] = 1,
-		['Prediction'] = 0,
+		['Prediction'] = 0.135,
 		['Readjustment'] = false,
-		['Legacy Smoothing'] = true, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
+		['3D Adjustment'] = { true, Vector3.new(1, 0, 1) },
+		['Legacy Smoothing'] = false, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
-			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['Point Scale'] = 'Dynamic', --[[ Legacy, Dynamic, Static, Scalar, Full ]]
+			['Ignore Blank Points'] = true,
 			['R15'] = {'Head'} 
 		},
 		['HitChance'] = {
@@ -193,7 +199,7 @@ getgenv().Script = {
 			}			
 		},
 		['Smoothing'] = {
-			['Smoothing'] = 50,
+			['Smoothing'] = 1,
 			['Easing'] = {
 				['Style'] = 'Expo',
 				['Formula'] = function(d, s)
@@ -212,19 +218,19 @@ getgenv().Script = {
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
 			['Wall Check'] = false,
-			['FOV Check'] = false,
+			['FOV Check'] = true,
 			['Visible'] = true,
 		},
 	},
 	['Triggerbot'] = {
 		['Enabled'] = false,
-		['Default FOV'] = 10,
+		['Default FOV'] = 6,
 		['Interval'] = 1,
-		['Tolerance'] = 0.5,
+		['Tolerance'] = 1,
 		['Cooldown 1'] = 0.1275,
 		['Cooldown 2'] = 0.12,
-		['Prediction'] = 0.06,
-		['FOVType'] = 'CircleFOV',
+		['Prediction'] = 0.132,
+		['FOVType'] = 'BoxFOV',
 		['Activation'] = {
 			['Mode'] = 'Mouse', --[[ Mouse / Keybind ]]--
 			['Type'] = 'Hold', --[[ Toggle / Hold ]]--
@@ -234,7 +240,7 @@ getgenv().Script = {
 	['Helpers'] = {
 		['DisableYAxis'] = false,
 		['Bullet Curvation'] = {	
-			['Enabled'] = false,
+			['Enabled'] = true,
 			['Formula'] = '3D', --[[ 3D, 2D ]]--
 			['2D'] = {
 				['X'] = 300,
@@ -394,7 +400,7 @@ getgenv().Script = {
 		},
 		['Visualization'] = {
 			['Assist'] = {
-				['Visible'] = true,
+				['Visible'] = false,
 				['Filled'] = false,
 				['Transparency'] = 0.4,
 				['Color'] = Color3.fromRGB(221, 130, 240),
@@ -432,7 +438,7 @@ getgenv().Script = {
 	},
 	['Misc'] = {
 		['RemoveSeats'] = false,
-		['AntiFling'] = false,
+		['AntiFling'] = true,
 		['AntiLock'] = {
 			['Enabled'] = false,
 			['Type'] = 'Prediction Disabler', --[[ Sides, Prediction Disabler ]]--
@@ -468,7 +474,7 @@ getgenv().Script = {
 		['GunFOV'] = false,
 		['Silent'] = {
 			['BoxFOV'] = {
-				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--
+				['Bind To Silent'] = true, --[[ Make your box move with your silent ]]--
 				['Height'] = 2,
 				['Width'] = 1.2,
 			},
@@ -485,8 +491,8 @@ getgenv().Script = {
 		},
 		['Triggerbot'] = {
 			['BoxFOV'] = {
-				['Height'] = 1.3,
-				['Width'] = 1.3,
+				['Height'] = 2,
+				['Width'] = 1.2,
 			},
 			['CircleFOV'] = { --[[ Short, Medium, Long ]]--
 				['Revolver'] = { 75, 50, 25 },
