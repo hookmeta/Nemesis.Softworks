@@ -100,10 +100,11 @@ getgenv().Script = {
 		['Enabled'] = false, --[[ This is unsafe to use on games that are not listed in our status channel. (even on hood games!, only use this for universal use. )]]
 		['Predict'] = false,
 		['Prediction'] = 0.112,
+		['HitParts'] = {'Head', 'HumanoidRootPart'},
 		['HitPart'] = 'Head',
-		['PointScale'] = {
-			['Head'] = 100,
-			['Body'] = 50, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
+		['HitChance'] = {
+			['HitChance'] = 100,
+			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
 		--[[
 			Extra info:
