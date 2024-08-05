@@ -7,7 +7,7 @@
 	🔴 Not Yet Available
 	🟣 Supported by Nemesis's Native Universal Handler
 	
-	Copy Support (26)
+	Copy Support (25)
 	
 	🟢 Da Hood
 	🟢 Da Strike
@@ -18,7 +18,6 @@
 	🟢 Dah Hood 1
 	🟢 Dah Hood 2
 	🟢 Hood Modded
-	🟢 Hood Custom
 	🟢 Custom Lock
 	🟢 Custom FFA
 	🟢 OG Da Hood
