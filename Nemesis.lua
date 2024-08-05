@@ -66,8 +66,8 @@ getgenv().Script = {
 			},
 		},
 		['Script Logic'] = {
-			['FFA Mode'] = false, --[[ Keep on for hood games ]]
-			['Global Wall Check'] = false --[[ Checks if a player is behind a wall before locking on ]]
+			['FFA Mode'] = true, --[[ Keep on for hood games ]]
+			['Global Wall Check'] = true --[[ Checks if a player is behind a wall before locking on ]]
 		}
 	},
 	['Binds'] = {
@@ -99,7 +99,7 @@ getgenv().Script = {
 		['140-150'] = 0.1575,
 	},
 	['Universal'] = {
-		['Enabled'] = true, --[[ This is unsafe to use on games that are not listed in our status channel. (even on hood games!, only use this for universal use. )]]
+		['Enabled'] = false, --[[ This is unsafe to use on games that are not listed in our status channel. (even on hood games!, only use this for universal use. )]]
 		['Predict'] = false,
 		['Prediction'] = 0.112,
 		['Method'] = 'Raycast', --[[ Raycast, FindPartOnRayWithIgnoreList, FindPartOnRayWithWhitelist, FindPartOnRay ]]
