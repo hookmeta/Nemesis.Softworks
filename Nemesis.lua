@@ -37,7 +37,7 @@
 	🟢 The Hood Customs
 	
 	
-	Universal Support (7)
+	Universal Support (8)
 	
 	🟡 Phantom Forces
 	🟣 Counter Blox
@@ -46,12 +46,14 @@
 	🟣 Fortblox
 	🟣 Rivals
 	🟣 Jailbird
+	🟣 Operations Siege
 	🟣 Any Non Custom Model Game
 ]]
 
 getgenv().Script = {
 	['Core'] = {
 		['Key'] = '',
+		['Luarmor Version'] = 'v0.2', 
 		['Intro'] = false, --[[ Buggy (Wave) ]]--
 		['OverrideYAxis'] = 'None', --[[ Full / Partial / None ]]--
 		['Script Safety'] = {
@@ -64,8 +66,8 @@ getgenv().Script = {
 			},
 		},
 		['Script Logic'] = {
-			['FFA Mode'] = true, --[[ Keep on for hood games ]]
-			['Global Wall Check'] = true --[[ Checks if a player is behind a wall before locking on ]]
+			['FFA Mode'] = false, --[[ Keep on for hood games ]]
+			['Global Wall Check'] = false --[[ Checks if a player is behind a wall before locking on ]]
 		}
 	},
 	['Binds'] = {
@@ -97,9 +99,11 @@ getgenv().Script = {
 		['140-150'] = 0.1575,
 	},
 	['Universal'] = {
-		['Enabled'] = false, --[[ This is unsafe to use on games that are not listed in our status channel. (even on hood games!, only use this for universal use. )]]
+		['Enabled'] = true, --[[ This is unsafe to use on games that are not listed in our status channel. (even on hood games!, only use this for universal use. )]]
 		['Predict'] = false,
 		['Prediction'] = 0.112,
+		['Method'] = 'Raycast', --[[ Raycast, FindPartOnRayWithIgnoreList, FindPartOnRayWithWhitelist, FindPartOnRay ]]
+		['WallCheck Origin'] = 'Head', --[[ Head, Torso, Camera ]]
 		['HitParts'] = {'Head', 'HumanoidRootPart'},
 		['HitPart'] = 'Head',
 		['HitChance'] = {
