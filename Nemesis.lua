@@ -36,14 +36,13 @@
 	🟢 The Hood Customs
 	
 	
-	Universal Support (8)
+	Universal Support (7)
 	
 	🟡 Phantom Forces
 	🟣 Counter Blox
 	🟣 Criminality
 	🟣 Chaos Town
 	🟣 Fortblox
-	🟣 Rivals
 	🟣 Jailbird
 	🟣 Operations Siege
 	🟣 Any Non Custom Model Game
@@ -52,15 +51,15 @@
 getgenv().Script = {
 	['Core'] = {
 		['Key'] = '',
-		['Luarmor Version'] = 'v0.2', 
-		['Intro'] = false, --[[ Buggy (Wave) ]]--
+		['Luarmor Version'] = 'v0.3', 
+		['Intro'] = true, --[[ Buggy (Wave) ]]--
 		['OverrideYAxis'] = 'None', --[[ Full / Partial / None ]]--
 		['Script Safety'] = {
 			['Unload'] = {
 				['Enabled'] = false,
 			},
 			['Soft Panic'] = {
-				['Enabled'] = true,
+				['Enabled'] = false,
 				['Disables'] = {'Visuals'}
 			},
 		},
@@ -70,13 +69,13 @@ getgenv().Script = {
 		}
 	},
 	['Binds'] = {
-		['LockOn'] = 'Z',
+		['LockOn'] = 'T',
 		['Unlock'] = 'Z', --[[ Only works with double bind ]]
 		['AimAssist Toggle'] = 'B', -- [[ This is to completely disable the aim assist till the button is clicked again ]]
 		['Silent Toggle'] = 'P',
-		['Triggerbot'] = 'MouseButton2',
+		['Triggerbot'] = 'C',
 		['AntiLock'] = 'Y',
-		['Specific ESP'] = 'T',
+		['Specific ESP'] = 'T',	
 		['Macro'] = 'X',
 		['NoClip'] = '-',
 		['InventorySorter'] = 'H',
@@ -118,23 +117,24 @@ getgenv().Script = {
 		]]
 	},
 	['Silent'] = {
-		['Enabled'] = true,
+		['Enabled'] = false,
 		['Mode'] = 'Regular', --[[ Target / Regular ]]--
-		['HitScan'] = 'Automatic', --[[ On Shot / Automatic ]]--
+		['HitScan'] = 'On Shot', --[[ On Shot / Automatic ]]--
 		['FOVType'] = 'CircleFOV', --[[ BoxFOV / CircleFOV ]]--
-		['Default FOV'] = 100,
+		['Default FOV'] = 150, --[[ Applies to universal too ]]
 		['HitChance'] = {
 			['HitChance'] = 100,
 			['Miss Chance'] = 0, -- [[ Counts by decimals, eg: 0.1 = 10% ]]
 		},
-		['Prediction'] = 0.12772152,
+		['Prediction'] = 0.12972152,
 		['Draw Hit'] = false, 
 		['Auto Prediction'] = false,
-		['Prediction Adjustment'] = 1.1,
+		['Prediction Adjustment'] = 1,
 		['3D Adjustment'] = { false, Vector3.new(1, 0, 1) },
 		['Hit Location'] = {
 			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
 			['Point Scale'] = 'Dynamic', --[[ Legacy, Dynamic, Static, Scalar, Full ]]
+			['Max Nearest Point'] = 0,
 			['Ignore Blank Points'] = true,
 			['R15'] = {'Head'}
 		},
@@ -165,15 +165,16 @@ getgenv().Script = {
 		['Mode'] = 'Target', --[[ Target / Regular ]]--
 		['Double Bind'] = false,
 		['Radius'] = 100,
-		['Stutter'] = 5,
+		['Stutter'] = 0,
 		['Stickiness'] = 1,
-		['Prediction'] = 0.135,
+		['Prediction'] = 0,
 		['Readjustment'] = false,
-		['3D Adjustment'] = { true, Vector3.new(1, 0, 1) },
+		['3D Adjustment'] = { true, Vector3.new(1, 1, 1) },
 		['Legacy Smoothing'] = false, --[[ Whole number smoothing (30, 50 etc), Disable to use decimals ]]--
 		['Hit Location'] = {
-			['Hit Target'] = 'Nearest Point', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
+			['Hit Target'] = 'R15', --[[ Nearest Point / Center Point /, Nearest Part, R15 ]]--
 			['Point Scale'] = 'Dynamic', --[[ Legacy, Dynamic, Static, Scalar, Full ]]
+			['Max Nearest Point'] = 5,
 			['Ignore Blank Points'] = true,
 			['R15'] = {'Head'} 
 		},
@@ -207,7 +208,8 @@ getgenv().Script = {
 			['Easing'] = {
 				['Style'] = 'Expo',
 				['Formula'] = function(d, s)
-					return(d / s^s) - tick()
+					local UseCustom = false
+					return (UseCustom and (d / s^s) - tick()) or Enum.EasingDirection.InOut
 				end,
 			},
 		},
@@ -221,30 +223,30 @@ getgenv().Script = {
 			['Third Person'] = false,
 			['Chat Focused'] = false,
 			['Tool Equipped'] = false,
-			['Wall Check'] = false,
+			['Wall Check'] = true,
 			['FOV Check'] = true,
 			['Visible'] = true,
 		},
 	},
 	['Triggerbot'] = {
 		['Enabled'] = false,
-		['Default FOV'] = 6,
+		['Default FOV'] = 23,
 		['Interval'] = 1,
 		['Tolerance'] = 1,
 		['Cooldown 1'] = 0.1275,
 		['Cooldown 2'] = 0.12,
 		['Prediction'] = 0.132,
-		['FOVType'] = 'BoxFOV',
+		['FOVType'] = 'CircleFOV',
 		['Activation'] = {
-			['Mode'] = 'Mouse', --[[ Mouse / Keybind ]]--
-			['Type'] = 'Hold', --[[ Toggle / Hold ]]--
+			['Mode'] = 'Keybind', --[[ Mouse / Keybind ]]--
+			['Type'] = 'Toggle', --[[ Toggle / Hold ]]--
 		},
 		['Silent Link'] = false, --[[ Adjusts the triggerbot depending on Silent Aim ]]--
 	},
 	['Helpers'] = {
 		['DisableYAxis'] = false,
 		['Bullet Curvation'] = {	
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Formula'] = '3D', --[[ 3D, 2D ]]--
 			['2D'] = {
 				['X'] = 300,
@@ -253,7 +255,7 @@ getgenv().Script = {
 			['3D'] = {
 				['Angle'] = 4.6,
 			},
-			['Logger'] = true --[[ Print information ]]--
+			['Logger'] = false --[[ Print information ]]--
 		},
 		['Location Assist'] = {
 			['Visible'] = false,
@@ -273,7 +275,7 @@ getgenv().Script = {
 	['Visuals'] = {
 		['Load Check'] = false, --[[ Hide visuals on start ]]--
 		['Global ESP'] = {
-			['Enabled'] = true,
+			['Enabled'] = false,
 			['Team Check'] = true,
 			['Max Draw Distance'] = math.huge,
 			['Text Size'] = 10,
@@ -302,11 +304,11 @@ getgenv().Script = {
 					['Color Keypoint'] = Color3.fromRGB(202, 219, 247), 
 				},
 				['Boxes'] = {
-					['Enabled'] = true,
+					['Enabled'] = false,
 					['Box Type'] = 'Bounding Box', -- Corner, Bounding Box
 					['Bounding Box'] = {
 						['Animate'] = true,
-						['Animate Speed'] = 50,
+						['Animate Speed'] = 360,
 						['Gradient'] = true, 
 						['Alpha Color'] = Color3.fromRGB(239, 193, 193), 
 						['Depth Color'] = Color3.fromRGB(239, 193, 193), 
@@ -315,7 +317,7 @@ getgenv().Script = {
 						['Fill Glow'] = Color3.fromRGB(239, 193, 193),
 						['Filled'] = {
 							['Enabled'] = true,
-							['Transparency'] = 0.50,
+							['Transparency'] = 0.75,
 							['Color'] = Color3.fromRGB(239, 193, 193), 
 						},
 					},
@@ -363,7 +365,7 @@ getgenv().Script = {
 			['Visible'] = false,
 			['Thickness'] = 1,
 			['Color'] = Color3.fromRGB(255, 255, 255),
-			['Transparency'] = 0.7,
+			['Transparency'] = 1,
 		},
 		['Crosshair'] = { --[[ Some text positions are currently messed up ]]
 			['Visible'] = false,
@@ -420,7 +422,7 @@ getgenv().Script = {
 				['CircleFOV'] = {
 					['Visible'] = true,
 					['Filled'] = true,
-					['Transparency'] = 0.4,
+					['Transparency'] = 1,
 					['Color'] = Color3.fromRGB(221, 130, 240),
 				},
 			},
@@ -441,10 +443,10 @@ getgenv().Script = {
 		},
 	},
 	['Misc'] = {
-		['RemoveSeats'] = false,
+		['RemoveSeats'] = true,
 		['AntiFling'] = true,
 		['AntiLock'] = {
-			['Enabled'] = false,
+			['Enabled'] = true,
 			['Type'] = 'Prediction Disabler', --[[ Sides, Prediction Disabler ]]--
 		},	
 		['Macro'] = {
@@ -478,7 +480,7 @@ getgenv().Script = {
 		['GunFOV'] = false,
 		['Silent'] = {
 			['BoxFOV'] = {
-				['Bind To Silent'] = true, --[[ Make your box move with your silent ]]--
+				['Bind To Silent'] = false, --[[ Make your box move with your silent ]]--
 				['Height'] = 2,
 				['Width'] = 1.2,
 			},
